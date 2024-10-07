@@ -20,7 +20,7 @@ ARG MONGODB_URI
 ENV MONGODB_URI=$MONGODB_URI
 
 # Expose port (change if necessary)
-EXPOSE 8080
+EXPOSE 5000
 
 # Command to run the application
 CMD ["node", "server.js"]
