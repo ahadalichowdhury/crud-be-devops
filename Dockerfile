@@ -23,4 +23,4 @@ ENV MONGODB_URI=$MONGODB_URI
 EXPOSE 5000
 
 # Command to run the application
-CMD ["node", "server.js"]
+CMD ["node", "index.js"]
