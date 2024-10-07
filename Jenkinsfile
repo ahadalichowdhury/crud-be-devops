@@ -65,16 +65,18 @@ stage('SonarQube Analysis') {
         stage('Build Docker') {
             steps {
                 script {
-                  withCredentials([string(credentialsId: 'MONGODB_URI', variable: 'MY_ARG_SECRET')]) {
-                      sh """
-                    echo 'Building Docker Image with secret'
-                    docker build --build-arg MONGODB_URI=${MONGODB_URI} -t ahadalichowdhury/crud-be-devops:${BUILD_NUMBER} .
-                    """
-                  }
-
+                    // Use withCredentials to access the secret
+                    withCredentials([string(credentialsId: 'MONGODB_URI', variable: 'MONGODB_URI')]) {
+                        sh """
+                        echo 'Building Docker Image with secret'
+                        docker build --build-arg MONGODB_URI=${MONGODB_URI} -t ahadalichowdhury/crud-be-devops:${BUILD_NUMBER} .
+                        """
+                    }
                 }
             }
         }
+
+
 
         stage('Login to Docker Hub') {
             steps {
