@@ -1,0 +1,15 @@
+# Service for the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: crud-be
+  labels:
+    app: crud-be
+spec:
+  ports:
+    - port: 80
+      targetPort: 5000
+      protocol: TCP
+  selector:
+    app: crud-be
+  type: ClusterIP
