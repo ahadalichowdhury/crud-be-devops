@@ -101,13 +101,11 @@ stage('SonarQube Analysis') {
                 }
             }
         }
-        stage("Trivy Scan") {
-           steps {
-               script {
-	            sh ('docker run -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image ahadalichowdhury/crud-be-devops:${BUILD_NUMBER} --no-progress --scanners vuln  --exit-code 0 --severity HIGH,CRITICAL --format table')
-               }
-           }
-       }
+        stage("TRIVY Image Scan") {
+            steps {
+                sh 'trivy image ahadalichowdhury/crud-be-devops:${BUILD_NUMBER} > trivyimage.txt' 
+            }
+        }
 
         stage('Update Helm Chart and Push to GitHub') {
             steps {
