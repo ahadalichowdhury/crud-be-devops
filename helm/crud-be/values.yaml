@@ -8,7 +8,7 @@ image:
   repository: ahadalichowdhury/crud-be-devops
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 6
+  tag: 7
 
 ingress:
   enabled: false
