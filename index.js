@@ -18,7 +18,9 @@ app.use((req, res, next) => {
 	res.locals.path = req.path;
 	next();
 });
-
+app.get("/", (req, res) => {
+	res.send("Hello World");
+});
 // routes
 app.use("/api/cruds", crudRoutes);
 //app.use("/api/auth", authRoute);
