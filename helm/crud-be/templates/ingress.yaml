@@ -8,7 +8,6 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
     external-dns.alpha.kubernetes.io/hostname: "crud.ahadalichowdhury.online"
-    # alb.ingress.kubernetes.io/subnets: "subnet-0aa439b4ddafcca10,subnet-0b95df318219145ca,subnet-0ccca36474902829a"
 spec:
   ingressClassName: alb
   rules:
@@ -22,7 +21,7 @@ spec:
                 name: crud-be
                 port:
                   number: 80
-          - path: /
+          - path: / # Catch all other routes and forward to frontend
             pathType: Prefix
             backend:
               service:
